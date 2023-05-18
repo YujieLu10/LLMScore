@@ -1,0 +1,3 @@
+[submodule "submodule/detectron2"]
+	path = submodule/detectron2
+	url = https://github.com/facebookresearch/detectron2.git
