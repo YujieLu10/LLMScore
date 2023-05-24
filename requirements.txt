@@ -1,6 +1,6 @@
 opencv-python==4.5.5.64
 mss
-timm==0.6.7
+timm
 dataclasses
 ftfy
 regex
@@ -16,10 +16,8 @@ boto3
 scikit-image
 pyyaml
 inflect
-protobuf==3.19.4
+protobuf==3.19.6
 einops==0.4.1
 deepspeed==0.7.0
 icecream
 openai
--e git+https://github.com/huggingface/transformers
-salesforce-lavis
