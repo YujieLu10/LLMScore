@@ -21,14 +21,23 @@ class EvaluationInstructor:
                 messages = [
                 {"role": "user", "content" : prompt}]
             )
+        elif self.llm_id in ["vicuna"]:
+            openai.api_key = "EMPTY" # Not support yet
+            openai.api_base = "http://localhost:8000/v1"
+            model = "vicuna-7b-v1.1"
+            completion = openai.ChatCompletion.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}]
+            )
         else:
             completion = self.completion.create(prompt=prompt, engine=self.llm_id)
         response = completion['choices'][0]['message']['content']
+        response = "\n".join(item for item in response.split('\n') if item)
         if use_rule:
             X1,X2,Y1,Y2,rationale = response.split("\n")
             avg_score = ((int(X2)/int(X1))+(int(Y2)/int(Y1)))/2
             return avg_score, rationale
         else:
-            overall, error_counting, overall_rationale, error_counting_rationale = response.split("\n")
+            overall, error_counting, overall_rationale, error_counting_rationale = response.split("\n")[:4]
             return overall, error_counting, overall_rationale, error_counting_rationale
         

@@ -61,6 +61,10 @@ def get_parser():
         default="sample/sample.png",
     )
     parser.add_argument(
+        "--llm_id",
+        default="gpt-4",
+    )
+    parser.add_argument(
         "--text_prompt",
         default="a red car and a white sheep",
         help="text prompt",
@@ -107,8 +111,8 @@ if __name__ == "__main__":
     openai_key = os.environ['OPENAI_KEY']
     global_descriptor = GlobalDescriptor()
     local_descriptor = LocalDescriptor()
-    llm_descriptor = VisualDescriptor(openai_key)
-    llm_evaluator = EvaluationInstructor(openai_key)
+    llm_descriptor = VisualDescriptor(openai_key, args.llm_id)
+    llm_evaluator = EvaluationInstructor(openai_key, args.llm_id)
     text_prompt = args.text_prompt
 
     img_src = args.image

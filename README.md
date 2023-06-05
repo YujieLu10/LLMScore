@@ -26,6 +26,19 @@ Get score with rationale for evaluating the alignment between image and text pro
 python llm_score.py --image sample/sample.png --text_prompt "a red car and a white sheep"
 ```
 
+Try different LLMs by setting LLM_ID as one of ["gpt-4", "gpt-3.5-turbo", "vicuna"]:
+```
+python llm_score.py --image sample/sample.png --text_prompt "a red car and a white sheep" --llm_id LLM_ID
+```
+
+Notice that to use Vicuna, follow Part **Install** and Part **Model Weights** in [FastChat_README](https://github.com/lm-sys/FastChat) to install fastchat and to obtain the Vicuna weights.
+To enable OpenAI-compastible APIs used in our repo, follow commands from [Guideline](https://github.com/lm-sys/FastChat/blob/main/docs/openai_api.md) to launch the controller, model worker and RESTful API server as below:
+```
+python3 -m fastchat.serve.controller
+python3 -m fastchat.serve.model_worker --model-name 'vicuna-7b-v1.1' --model-path /path/to/vicuna/weights
+python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
+```
+
 ## LLMScore with Rationale
 
 <p align="center">
