@@ -7,7 +7,7 @@ git clone https://github.com/YujieLu10/LLMScore.git
 cd LLMScore
 pip install -r requirements.txt
 
-git submodule add https://github.com/facebookresearch/detectron2.git submodule/detectron2
+git submodule update --init
 cd submodule/detectron2
 pip install -e .
 

@@ -13,7 +13,6 @@ class VisualDescriptor:
                 {"role": "user", "content" : prompt}]
             )
         elif self.llm_id in ["vicuna"]:
-            openai.api_key = "EMPTY" # Not support yet
             openai.api_base = "http://localhost:8000/v1"
             model = "vicuna-7b-v1.1"
             completion = openai.ChatCompletion.create(
